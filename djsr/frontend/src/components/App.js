@@ -1,5 +1,5 @@
 import React, { Component} from "react";
-import { Switch, Route, Link } from "react-router-dom";
+import { Switch, Route, Link, withRouter } from "react-router-dom";
 import Login from "./login";
 import Signup from "./signup";
 import Hello from "./hello";
@@ -9,8 +9,8 @@ import axiosInstance from "../axiosApi";
 
 class App extends Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.handleLogout = this.handleLogout.bind(this);
     }
 
@@ -19,10 +19,8 @@ class App extends Component {
             const response = await axiosInstance.post('/blacklist/', {
                 "refresh_token": localStorage.getItem("refresh_token")
             });
-            localStorage.removeItem('access_token');
-            localStorage.removeItem('refresh_token');
-            axiosInstance.defaults.headers['Authorization'] = null;
-            return response;
+            localStorage.clear();
+            window.location.href = '/';
         }
         catch (e) {
             console.log(e);

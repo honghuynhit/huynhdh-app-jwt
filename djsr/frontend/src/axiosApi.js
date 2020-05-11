@@ -3,7 +3,7 @@
 import axios from 'axios'
 
 const axiosInstance = axios.create({
-    baseURL: 'http://127.0.0.1:8000/api/',
+    baseURL: 'http://127.0.0.1:8080/api/',
     timeout: 5000,
     headers: {
         'Authorization': localStorage.getItem('access_token') ? "Bearer " + localStorage.getItem('access_token') : null,
