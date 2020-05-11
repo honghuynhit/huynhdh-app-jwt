@@ -1,1 +1,2 @@
-worker: node server.js
+release: python manage.py migrate --noinput
+web: gunicorn demo.wsgi
