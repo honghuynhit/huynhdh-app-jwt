@@ -1,2 +1,2 @@
 release: python manage.py migrate --noinput
-web: gunicorn demo.wsgi
+web: gunicorn djsr.wsgi
